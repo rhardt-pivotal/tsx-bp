@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "HELLO FROM PROVIDES!!!! $1   :   $2"
+echo "\n\n***\nHELLO FROM SUPPLY!!!!\n***\n\n $1   :   $2"
