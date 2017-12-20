@@ -2,4 +2,4 @@
 echo "\n\n***\nHELLO FROM SUPPLY!!!!\n***\n\n $1   :   $2   :   $3   :   $4"
 mkdir $3/$4/bin
 echo "echo \"hello\\n\"" > $3/$4/bin/hello.sh
-chmod +x $3/bin/hello.sh
+chmod +x $3/$4/bin/hello.sh
