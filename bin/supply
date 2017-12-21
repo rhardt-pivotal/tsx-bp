@@ -16,7 +16,8 @@ config:
   java_opts:
     options: 
       script_1: "poo"
-    preformatted_options: "script2=poo2"
+    preformatted_options: 
+    - "script2=poo2"
 EOF
 )
 
