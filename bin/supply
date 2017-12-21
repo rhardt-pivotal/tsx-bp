@@ -3,21 +3,21 @@ echo "\n\n***\nHELLO FROM SUPPLY!!!!\n***\n\n $1   :   $2   :   $3   :   $4"
 mkdir $3/$4/bin
 SCRIPT=$(cat <<EOF
 #!/bin/sh
-echo "********* RUNNING SCRIPT!!!! ************\n"
+echo "nothing_to_see_here"
 echo "\$1\n" >> /tmp/SCRIPT.RAN
 EOF
 )
 echo "$SCRIPT" > $3/$4/bin/script.sh
 chmod +x $3/$4/bin/script.sh
-CONTENT=$(cat <<EOF
+CONTENT=$(cat <<"EOF"
 --- 
 name: tsx_buildpack
 config:
   java_opts:
     options: 
-      "-Dscript_1": "poo"
+      "-Dscript_1": "$(script.sh script1)"
     preformatted_options: 
-    - "-Dscript2=poo2"
+    - "-Dscript2=$(script.sh script2)"
 EOF
 )
 
