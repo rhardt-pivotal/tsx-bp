@@ -8,8 +8,6 @@ CONTENT=$(cat <<EOF
 --- 
 name: tsx_buildpack
 config:
-  additional_libraries: []
-  java_opts.system_properties: "-Dhello=true"
 EOF
 )
 
