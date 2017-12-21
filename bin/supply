@@ -16,7 +16,7 @@ config:
   java_opts:
     options: 
       script_1: \$\(script.sh  script1\)
-    preformatted_options: "-Dscript2=\$\(script.sh scripts\)"
+    preformatted_options: script2=\$\(script.sh scripts\)
 EOF
 )
 
