@@ -5,8 +5,8 @@ mkdir $3/bin
 touch $3/bin/three.sh
 touch $3/$4/threefour.sh
 CONTENT=$(cat <<EOF
-config:
-  java_opts.system_properties: -Dhello=true
+java_opts.system_properties: -Dhello=true
+additional_libraries: []
 EOF
 )
 echo $CONTENT
