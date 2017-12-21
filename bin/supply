@@ -4,7 +4,7 @@ mkdir $3/$4/bin
 SCRIPT=$(cat <<EOF
 #!/bin/sh
 echo "********* RUNNING SCRIPT!!!! ************\n"
-echo "$1\n" >> /tmp/SCRIPT.RAN
+echo "\$1\n" >> /tmp/SCRIPT.RAN
 EOF
 )
 echo "$SCRIPT" > $3/$4/bin/script.sh
