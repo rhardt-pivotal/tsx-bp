@@ -1,23 +1,39 @@
 #!/bin/sh
 echo "\n\n***\nHELLO FROM SUPPLY!!!!\n***\n\n $1   :   $2   :   $3   :   $4"
+if ! [[ -v TSX_TAR_URI ]]
+then
+  echo "TSX_TAR_URI env var not set"
+  exit 1
+fi
+echo "TSX_TAR_URI: $TSX_TAR_URI\n"
+
 mkdir $3/$4/bin
 SCRIPT=$(cat <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
+set -e
 echo "nothing_to_see_here"
-echo "\$1\n" >> /tmp/SCRIPT.RAN
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $SCRIPT_DIR
+wget $TSX_TAR_URI --quiet -O ./tsx.tar
+mkdir tsx
+tar xf tsx.tar -C tsx --strip-components 1
+cd tsx
+./install.sh >/dev/null 2>&1
+tsx set -y 1 >/dev/null 2>&1
 EOF
 )
-echo "$SCRIPT" > $3/$4/bin/script.sh
-chmod +x $3/$4/bin/script.sh
+echo "$SCRIPT" > $3/$4/bin/tsx_install.sh
+chmod +x $3/$4/bin/tsx_install.sh
 CONTENT=$(cat <<EOF
 --- 
 name: tsx_buildpack
 config:
   java_opts:
     options: 
-      "-Dscript_1": "\$(\$HOME/../deps/$4/bin/script.sh script1)"
-    preformatted_options: 
-    - "-Dscript2=\$(\$HOME/../deps/$4/bin/script.sh script2)"
+      "-Dscript_1": "\$(\$HOME/../deps/$4/bin/tsx_install.sh $TSX_TAR_URI)"
+  environment_variables:
+    "PATH": "\$HOME/tsx/bin:\$PATH"
+    "LD_PRELOAD": "\$HOME/tsx/lib/tsx64.so"
 EOF
 )
 
