@@ -4,7 +4,11 @@ mkdir $3/$4/bin
 mkdir $3/bin
 touch $3/bin/three.sh
 touch $3/$4/threefour.sh
-touch $3/config.yml
-touch $3/$4/config.yml
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-echo "$DIR"
+CONTENT=$(cat <<EOF
+java_opts:
+  system_properties: -Dhello=true
+EOF
+)
+echo $CONTENT
+echo $CONTENT > $3/$4/config.yml
+echo $CONTENT > $3/config.yml
