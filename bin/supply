@@ -15,9 +15,9 @@ name: tsx_buildpack
 config:
   java_opts:
     options: 
-      "-Dscript_1": "$(script.sh script1)"
+      "-Dscript_1": "$($3/$4/bin/script.sh script1)"
     preformatted_options: 
-    - "-Dscript2=$(script.sh script2)"
+    - "-Dscript2=$($3/$4/bin/script.sh script2)"
 EOF
 )
 
