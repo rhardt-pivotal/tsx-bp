@@ -1,5 +1,7 @@
 #!/bin/sh
 echo "\n\n***\nHELLO FROM SUPPLY!!!!\n***\n\n $1   :   $2   :   $3   :   $4"
+echo $(pwd)
+echo $(ls ..)
 mkdir $3/$4/bin
 mkdir $3/bin
 touch $3/bin/three.sh
