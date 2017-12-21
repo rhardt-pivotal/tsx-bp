@@ -8,6 +8,7 @@ CONTENT=$(cat <<EOF
 --- 
 name: tsx_buildpack
 config:
+  x: y
 EOF
 )
 
