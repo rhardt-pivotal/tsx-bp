@@ -1,13 +1,22 @@
 #!/bin/sh
 echo "\n\n***\nHELLO FROM SUPPLY!!!!\n***\n\n $1   :   $2   :   $3   :   $4"
 mkdir $3/$4/bin
-touch $3/$4/bin/threefour.sh
-chmod +x $3/$4/bin/threefour.sh
+SCRIPT=$(cat <<EOF
+#!/bin/sh
+echo "********* RUNNING SCRIPT!!!! ************\n"
+echo "$1\n" >> /tmp/SCRIPT.RAN
+EOF
+)
+echo "$SCRIPT" > $3/$4/bin/script.sh
+chmod +x $3/$4/bin/script.sh
 CONTENT=$(cat <<EOF
 --- 
 name: tsx_buildpack
 config:
-  x: y
+  java_opts:
+    options: 
+      script_1: \$\(script.sh  script1\)
+    preformatted_options: "-Dscript2=\$\(script.sh scripts\)"
 EOF
 )
 
