@@ -2,7 +2,7 @@
 echo "\n\n***\nHELLO FROM SUPPLY!!!!\n***\n\n $1   :   $2   :   $3   :   $4"
 mkdir $3/$4/bin
 touch $3/$4/bin/threefour.sh
-chmod +x $3/$4/threefour.sh
+chmod +x $3/$4/bin/threefour.sh
 CONTENT=$(cat <<EOF
 --- 
 name: tsx_buildpack
