@@ -9,15 +9,15 @@ EOF
 )
 echo "$SCRIPT" > $3/$4/bin/script.sh
 chmod +x $3/$4/bin/script.sh
-CONTENT=$(cat <<"EOF"
+CONTENT=$(cat <<EOF
 --- 
 name: tsx_buildpack
 config:
   java_opts:
     options: 
-      "-Dscript_1": "$($3/$4/bin/script.sh script1)"
+      "-Dscript_1": "\$(\$HOME/deps/$4/bin/script.sh script1)"
     preformatted_options: 
-    - "-Dscript2=$($3/$4/bin/script.sh script2)"
+    - "-Dscript2=\$(\$HOME/deps/$4/bin/script.sh script2)"
 EOF
 )
 
